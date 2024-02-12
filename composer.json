@@ -1,0 +1,19 @@
+{
+    "name": "8lines/sylius-notification-plugin-slack-adapter",
+    "type": "sylius-notification-plugin-adapter",
+    "description": "Slack adapter for Sylius Notification Plugin",
+    "keywords": ["sylius", "notification", "plugin", "adapter", "slack"],
+    "license": "MIT",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=8.0",
+        "symfony/slack-notifier": "^6.0",
+        "8lines/sylius-notification-plugin": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EightLines\\SyliusNotificationPlugin\\NotificationChannel\\Symfony\\": ""
+        }
+    },
+    "minimum-stability": "dev"
+}
