@@ -73,9 +73,4 @@ final class SlackNotificationChannel implements NotificationChannelInterface
     {
         return SlackNotificationChannelFormType::class;
     }
-
-    public static function supports(): bool
-    {
-        return true;
-    }
 }
