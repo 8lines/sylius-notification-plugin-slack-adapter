@@ -1,8 +1,13 @@
 # SyliusNotificationPlugin
-#### Slack Notification Channel Adapter
+Slack Notification Channel Adapter
+
+### Table of Content
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ### Overview
-This package is an adapter for the [SyliusNotificationPlugin](https://github.com/8lines/SyliusNotificationsPlugin) that allows you to send notifications to [Slack](https://slack.com/).
+This package is an adapter for the [SyliusNotificationPlugin](https://github.com/8lines/SyliusNotificationsPlugin) that allows you to send notifications to [Slack](https://slack.com).
 
 ### Installation
 To install the adapter you need to run the following command:
