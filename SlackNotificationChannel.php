@@ -36,7 +36,7 @@ final class SlackNotificationChannel implements NotificationChannelInterface
         $message = $body->getMessage();
 
         if (null === $message) {
-            return;
+            throw new \InvalidArgumentException('The message cannot be null.');
         }
 
         $options = new SlackOptions();
