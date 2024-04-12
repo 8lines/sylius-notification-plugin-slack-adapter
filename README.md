@@ -1,5 +1,13 @@
+<p align="center">
+    <a href="https://8lines.io">
+        <img alt="8lines" src="https://8lines-static.s3.eu-central-1.amazonaws.com/open-source-logo-main.png">
+    </a>
+</p>
+
 # SyliusNotificationPlugin
 Slack Notification Channel Adapter
+
+---
 
 ### Table of Content
 - [Overview](#overview)
@@ -29,4 +37,4 @@ framework:
 ### Usage
 After the installation, you can use the **Slack Notification Channel** in your application. 
 There are one additional option that you can specify during the notification creation:
-- `channel` - the channel to which the notification will be sent. It can be either a channel name or a channel ID. If not specified, the notification will be sent to the default channel.
+- `recipient` - the channel to which the notification will be sent. It can be either a channel name or a channel ID. If not specified, the notification will be sent to the default channel.
