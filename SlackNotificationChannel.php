@@ -52,11 +52,11 @@ final class SlackNotificationChannel implements NotificationChannelInterface
 
         $options->block((new SlackSectionBlock())->text($message));
 
-        $message = new ChatMessage($message);
-        $message->options($options);
-        $message->transport(self::SLACK_TRANSPORT);
+        $chatMessage = new ChatMessage($message);
+        $chatMessage->options($options);
+        $chatMessage->transport(self::SLACK_TRANSPORT);
 
-        $this->chatter->send($message);
+        $this->chatter->send($chatMessage);
     }
 
     public static function getIdentifier(): string
