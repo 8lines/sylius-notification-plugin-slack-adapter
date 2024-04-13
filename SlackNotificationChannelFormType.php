@@ -20,6 +20,9 @@ final class SlackNotificationChannelFormType extends AbstractType
         $builder->addEventSubscriber(new AddContentFormSubscriber(
             subject: true,
             message: true,
+            options: [
+                'subject_required' => false,
+            ],
         ));
     }
 }
