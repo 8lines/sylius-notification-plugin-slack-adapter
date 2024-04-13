@@ -32,25 +32,13 @@ final class SlackNotificationChannel implements NotificationChannelInterface
         NotificationBody $body,
         NotificationContext $context,
     ): void {
-        $subject = $body->getSubject();
         $message = $body->getMessage();
 
         if (null === $message) {
             throw new \InvalidArgumentException('The message cannot be null.');
         }
 
-        $options = new SlackOptions();
-        $configuration = $context->getConfiguration();
-
-        if (true === $configuration->hasCustomValue('recipient')) {
-            $options->recipient($configuration->getCustomValue('recipient'));
-        }
-
-        if (null !== $subject) {
-            $options->block(new SlackHeaderBlock($subject));
-        }
-
-        $options->block((new SlackSectionBlock())->text($message));
+        $options = $this->buildSlackOptions($body, $context);
 
         $chatMessage = new ChatMessage($message);
         $chatMessage->options($options);
@@ -72,5 +60,38 @@ final class SlackNotificationChannel implements NotificationChannelInterface
     public static function getConfigurationFormType(): ?string
     {
         return SlackNotificationChannelFormType::class;
+    }
+
+    private function buildSlackOptions(NotificationBody $body, NotificationContext $context): SlackOptions
+    {
+        $message = $body->getMessage();
+
+        $configuration = $context->getConfiguration();
+
+        if (json_validate($message)) {
+            $jsonMessage = json_decode($message, true);
+
+            if (true === $configuration->hasCustomValue('recipient')) {
+                $jsonMessage['recipient_id'] = $configuration->getCustomValue('recipient');
+            }
+
+            return new SlackOptions($jsonMessage);
+        }
+
+        $options = new SlackOptions();
+
+        if (true === $configuration->hasCustomValue('recipient')) {
+            $options->recipient($configuration->getCustomValue('recipient'));
+        }
+
+        $subject = $body->getSubject();
+
+        if (null !== $subject) {
+            $options->block(new SlackHeaderBlock($subject));
+        }
+
+        $options->block((new SlackSectionBlock())->text($message));
+
+        return $options;
     }
 }
