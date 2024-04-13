@@ -20,7 +20,7 @@ This package is an adapter for the [SyliusNotificationPlugin](https://github.com
 ### Installation
 To install the adapter you need to run the following command:
 ```bash
-composer require 8lines/slack-notification-plugin-slack-adapter
+composer require 8lines/sylius-notification-plugin-slack-adapter
 ```
 Then configure [Slack Notifier](https://github.com/symfony/slack-notifier) and add the following variable to your `.env` file:
 ```dotenv
